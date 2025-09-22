@@ -1,0 +1,45 @@
+[project]
+name = "spacex-launch-tracker"
+version = "0.1.0"
+description = "Tracks and analyze SpaceX launches using their public API"
+authors = [
+    {name = "Shahzaib Ali Khan"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django (==5.0)",
+    "djangorestframework (>=3.16.1,<4.0.0)",
+    "django-enumfields2 (>=3.0.2,<4.0.0)",
+    "structlog (>=25.4.0,<26.0.0)",
+    "requests (>=2.32.5,<3.0.0)",
+    "django-filter (>=25.1,<26.0)",
+]
+
+[dependency-groups]
+dev = [
+    "pytest-django (>=4.11.1,<5.0.0)",
+    "black (>=25.9.0,<26.0.0)",
+    "isort (>=6.0.1,<7.0.0)",
+    "pytest-httpserver (>=1.1.3,<2.0.0)",
+    "requests-mock (>=1.12.1,<2.0.0)",
+]
+
+[tool.poetry]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "backend.settings"
+testpaths = ["tests"]
+python_files = [
+    "tests.py",
+    "test_*.py",
+    "*_tests.py",
+]
+pythonpath = ["src"]
